@@ -1,0 +1,434 @@
+
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoReply.ing - Find Customers on Reddit, X, and LinkedIn with AI</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&amp;family=Inter:wght@400;500;600;700;900&amp;family=Outfit:wght@400;500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="styles.css"></head>
+<body id="app-root" class="antialiased overflow-x-hidden selection:bg-brand-orange selection:text-white font-sans bg-white">
+
+    <nav class="absolute w-full z-50 top-0 left-0 py-6 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-12">
+                <a href="/" class="flex items-center gap-2 text-brand-orange">
+                    <img src="/logo.png" alt="Autoreply Logo" class="h-8">
+                </a>
+                <div class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
+                    <a href="#how-it-works" class="hover:text-brand-orange transition">How it Works</a>
+                    <a href="#features" class="hover:text-brand-orange transition">Platforms</a>
+                    <a href="#pricing" class="hover:text-brand-orange transition">Pricing</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="https://app.autoreply.ing/auth" class="group relative bg-brand-dark p-[2px] rounded-full shadow-lg transition-all duration-300 hover:shadow-xl">
+                    <div class="relative w-full h-full rounded-full overflow-hidden bg-transparent flex items-center gap-3 pl-6 pr-1.5 py-1.5">
+                        <div class="absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full transition-transform duration-[1500ms] ease-out group-hover:scale-[30]"></div>
+                        <span class="relative z-10 text-white group-hover:text-brand-dark text-sm font-bold transition-colors duration-[1000ms]">Get Started Free</span>
+                        <div class="relative z-10 bg-white text-brand-dark w-8 h-8 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main><section class="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden bg-brand-bg">
+    <!-- Grid BG -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-40 z-0"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center max-w-4xl mx-auto reveal">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 shadow-sm mb-8">
+                <span class="flex h-2 w-2 rounded-full bg-brand-green animate-pulse"></span>
+                <span class="text-xs font-bold text-gray-600 uppercase tracking-widest">Backed by AI Innovation</span>
+            </div>
+            
+            <h1 class="font-hero font-extrabold text-5xl lg:text-7xl text-brand-dark tracking-tight leading-[1.05] mb-8">
+                Find new customers on <span class="text-brand-orange">Reddit, X, and LinkedIn</span> with AI.
+            </h1>
+
+            <p class="text-xl text-gray-500 mb-12 leading-relaxed max-w-2xl mx-auto">
+                AutoReply.ing scans social platforms 24/7 to find people asking for what you're selling—and helps you reply with perfect, human-like AI responses.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button class="group relative bg-brand-dark p-[2px] rounded-full shadow-2xl hover:scale-105 transition-all duration-300">
+                    <div class="relative w-full h-full rounded-full overflow-hidden bg-transparent flex items-center gap-4 pl-10 pr-2 py-3">
+                        <div class="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 bg-white rounded-full transition-transform duration-[1500ms] ease-out group-hover:scale-[35]"></div>
+                        <span class="relative z-10 text-white group-hover:text-brand-dark font-bold text-lg transition-colors duration-[1000ms]">Start Free Trial</span>
+                        <span class="relative z-10 bg-white text-brand-dark w-11 h-11 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </span>
+                    </div>
+                </button>
+                <button class="px-8 py-4 text-brand-dark font-bold hover:text-brand-orange transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-play-circle text-xl"></i> See How it Works
+                </button>
+            </div>
+            
+            <!-- <p class="mt-6 text-sm text-gray-400">No credit card required • Instant setup</p> -->
+        </div>
+
+        <!-- Dashboard Preview -->
+        <div class="mt-24 relative reveal-scale">
+            <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-4/5 h-20 bg-brand-orange/20 blur-3xl opacity-50 -z-10"></div>
+            <div class="bg-white rounded-[2rem] shadow-2xl border border-gray-100 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixid=M3w4NjU0NDF8MHwxfHNlYXJjaHwxfHxNb2Rlcm4lMjBBSSUyMGRhc2hib2FyZCUyMHNob3dpbmclMjBzb2NpYWwlMjBtZWRpYSUyMG1vbml0b3JpbmclMjBhbmQlMjBsZWFkJTIwZ2VuZXJhdGlvbiUyMGNoYXJ0c3xlbnwwfDB8fHwxNzY5ODkzMzg1fDA&amp;ixlib=rb-4.1.0&amp;w=1200&amp;h=600&amp;fit=crop&amp;fm=jpg&amp;q=80" alt="AutoReply Dashboard" class="w-full">
+                
+                <!-- Floating Elements -->
+                <div class="absolute top-10 right-10 w-64 bg-white/90 backdrop-blur rounded-2xl p-4 shadow-xl border border-white/20 hidden lg:block" data-parallax="-0.05">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600"><i class="fa-brands fa-twitter"></i></div>
+                        <div class="text-xs font-bold">New Lead Found</div>
+                    </div>
+                    <p class="text-[10px] text-gray-500 leading-snug">"Does anyone know a good alternative to Salesforce for small teams?"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- LOGO CLOUD -->
+<section class="py-12 border-y border-gray-100 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <p class="text-center text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-10">Trusted by founders worldwide</p>
+        <div class="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-40 grayscale">
+            <i class="fa-brands fa-slack text-4xl"></i>
+            <i class="fa-brands fa-product-hunt text-4xl"></i>
+            <i class="fa-brands fa-stripe text-4xl"></i>
+            <i class="fa-brands fa-discord text-4xl"></i>
+            <i class="fa-brands fa-github text-4xl"></i>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20 reveal">
+            <h2 class="text-4xl lg:text-5xl font-hero font-bold text-brand-dark mb-6 tracking-tight">How it works</h2>
+            <p class="text-gray-500 text-lg max-w-2xl mx-auto">From setup to results in 3 simple steps. Our AI handles the heavy lifting.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-12 relative">
+            <!-- Step 1 -->
+            <div class="relative reveal-scale">
+                <div class="w-16 h-16 rounded-2xl bg-brand-orange/10 flex items-center justify-center text-brand-orange text-2xl font-bold mb-8">1</div>
+                <h3 class="text-2xl font-bold text-brand-dark mb-4">Set Your Targets</h3>
+                <p class="text-gray-500 leading-relaxed font-noname">Tell AutoReply what keywords or topics to monitor. Define your niche and the exact conversations you want to be part of.</p>
+                <div class="mt-8 bg-gray-50 rounded-xl p-6 border border-gray-100 font-mono text-xs text-gray-400">
+                    "Looking for: SaaS tools, CRM alternatives, help with sales..."
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="relative reveal-scale delay-75">
+                <div class="w-16 h-16 rounded-2xl bg-brand-purple/10 flex items-center justify-center text-brand-purple text-2xl font-bold mb-8">2</div>
+                <h3 class="text-2xl font-bold text-brand-dark mb-4">AI Finds Leads</h3>
+                <p class="text-gray-500 leading-relaxed font-noname">Our AI scans Reddit, X, and LinkedIn 24/7. It filters through millions of posts to find high-intent users who need your solution right now.</p>
+                <div class="mt-8 bg-brand-bg rounded-xl p-6 border border-gray-100 flex items-start gap-3">
+                    <img src="https://images.unsplash.com/photo-1701463387028-3947648f1337?ixid=M3w4NjU0NDF8MHwxfHNlYXJjaHwxfHxQcm9mZXNzaW9uYWwlMjBwcm9maWxlJTIwYXZhdGFyfGVufDB8fHx8MTc2OTg5MzM5MXww&amp;ixlib=rb-4.1.0&amp;w=40&amp;h=40&amp;fit=crop&amp;fm=jpg&amp;q=80" class="w-10 h-10 rounded-full" alt="Avatar">
+                    <div>
+                        <div class="text-[10px] font-bold text-brand-dark">Reddit u/dev_mike</div>
+                        <div class="text-xs text-gray-500 italic">"I'm struggling to find a tool for..."</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="relative reveal-scale delay-150">
+                <div class="w-16 h-16 rounded-2xl bg-brand-green/10 flex items-center justify-center text-brand-green text-2xl font-bold mb-8">3</div>
+                <h3 class="text-2xl font-bold text-brand-dark mb-4">Deploy Perfect Replies</h3>
+                <p class="text-gray-500 leading-relaxed font-noname">AutoReply generates hyper-personalized responses that sound human. One click to post and land in their primary inbox or notifications.</p>
+                <div class="mt-8 bg-brand-dark rounded-xl p-6 shadow-xl">
+                    <div class="text-[10px] font-bold text-white/50 mb-2 uppercase">AI Suggestion</div>
+                    <div class="text-xs text-white/90 leading-normal">"Hey Mike! For that specific use case, check out AutoReply. It actually handles..."</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PLATFORMS SECTION -->
+<section id="features" class="py-24 bg-brand-dark text-white overflow-hidden relative">
+    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-orange via-brand-purple to-brand-green"></div>
+    
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div class="reveal-left">
+                <h2 class="text-4xl lg:text-6xl font-hero font-bold mb-8 tracking-tight">The social platforms where your customers hang out.</h2>
+                
+                <div class="space-y-8">
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl text-[#FF4500]"><i class="fa-brands fa-reddit-alien"></i></div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Reddit Monitoring</h4>
+                            <p class="text-gray-400 font-noname">Monitor specific subreddits or keywords. Autoreply style discovery with better intelligence.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl text-[#1DA1F2]"><i class="fa-brands fa-twitter"></i></div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">X/Twitter Outreach</h4>
+                            <p class="text-gray-400 font-noname">Capture people asking for recommendations in real-time. Jump into the conversation first.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl text-[#0077B5]"><i class="fa-brands fa-linkedin-in"></i></div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">LinkedIn Authority</h4>
+                            <p class="text-gray-400 font-noname">Build trust by replying to industry influencers and finding B2B decision makers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative reveal-right">
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl">
+                    <div class="grid grid-cols-2 gap-8 mb-12">
+                        <div class="text-center">
+                            <div class="text-5xl font-hero font-bold text-brand-orange counter" data-target="35" data-suffix="%">0%</div>
+                            <div class="text-xs text-gray-500 mt-2 uppercase font-bold tracking-widest">Avg. Reply Rate</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-5xl font-hero font-bold text-brand-green counter" data-target="24" data-suffix="/7">0/7</div>
+                            <div class="text-xs text-gray-500 mt-2 uppercase font-bold tracking-widest">Monitoring</div>
+                        </div>
+                    </div>
+                    
+                    <div class="rounded-2xl bg-brand-dark p-6 border border-white/5">
+                        <p class="text-gray-400 text-sm mb-4 font-mono">// System Output</p>
+                        <p class="text-green-400 font-mono text-xs mb-2">&gt; Searching r/startups...</p>
+                        <p class="text-green-400 font-mono text-xs mb-2">&gt; 12 New conversations found</p>
+                        <p class="text-green-400 font-mono text-xs">&gt; Generating personalized context...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-4xl font-hero font-bold text-brand-dark mb-4">Go beyond simple {{first_name}}</h2>
+            <p class="text-gray-500 text-lg">See the results from actual users who switched to AutoReply.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Review 1 -->
+            <div class="p-8 rounded-3xl border border-gray-100 bg-brand-bg reveal-scale">
+                <div class="flex gap-1 text-brand-yellow mb-6">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-gray-600 font-medium mb-8 leading-relaxed italic">"The response rate is insane. We're hitting 30%+ consistently because the AI actually reads the context of the Reddit post."</p>
+                <div class="flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1547757555-8b9048aa4369?ixid=M3w4NjU0NDF8MHwxfHNlYXJjaHwxfHxQb3J0cmFpdCUyMG9mJTIwYSUyMHlvdW5nJTIwbWFsZSUyMGZvdW5kZXIlMjBzbWlsaW5nfGVufDB8fHx8MTc2OTg5MzQwMXww&amp;ixlib=rb-4.1.0&amp;w=60&amp;h=60&amp;fit=crop&amp;fm=jpg&amp;q=80" class="w-12 h-12 rounded-full" alt="Founder">
+                    <div>
+                        <div class="font-bold text-brand-dark">Alex Thorne</div>
+                        <div class="text-xs text-gray-400">Founder @ SaasBox</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Review 2 -->
+            <div class="p-8 rounded-3xl border border-gray-100 bg-brand-bg reveal-scale delay-75">
+                <div class="flex gap-1 text-brand-yellow mb-6">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-gray-600 font-medium mb-8 leading-relaxed italic">"Better than Popsy. The LinkedIn support changed everything for our sales team. It's like having a 24/7 SDR."</p>
+                <div class="flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1649589244330-09ca58e4fa64?ixid=M3w4NjU0NDF8MHwxfHNlYXJjaHwxfHxQb3J0cmFpdCUyMG9mJTIwcHJvZmVzc2lvbmFsJTIwd29tYW58ZW58MHx8fHwxNzY5ODkzNDAxfDA&amp;ixlib=rb-4.1.0&amp;w=60&amp;h=60&amp;fit=crop&amp;fm=jpg&amp;q=80" class="w-12 h-12 rounded-full" alt="CMO">
+                    <div>
+                        <div class="font-bold text-brand-dark">Sarah Jenks</div>
+                        <div class="text-xs text-gray-400">CMO @ GrowthLabs</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Review 3 -->
+            <div class="p-8 rounded-3xl border border-gray-100 bg-brand-bg reveal-scale delay-150">
+                <div class="flex gap-1 text-brand-yellow mb-6">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-gray-600 font-medium mb-8 leading-relaxed italic">"I was skeptical of AI outreach, but these replies sound human. They add value before they link the product."</p>
+                <div class="flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1734896454854-51b77c9647e7?ixid=M3w4NjU0NDF8MHwxfHNlYXJjaHwxfHxNYW4lMjBpbiUyMGNhc3VhbCUyMHRlY2glMjBhdHRpcmV8ZW58MHx8fHwxNzY5ODkzNDAxfDA&amp;ixlib=rb-4.1.0&amp;w=60&amp;h=60&amp;fit=crop&amp;fm=jpg&amp;q=80" class="w-12 h-12 rounded-full" alt="Dev">
+                    <div>
+                        <div class="font-bold text-brand-dark">Mike Ross</div>
+                        <div class="text-xs text-gray-400">Indie Hacker</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-4xl font-hero font-bold text-brand-dark mb-4">Simple, transparent pricing</h2>
+            <p class="text-gray-500 text-lg">Start free, scale as you grow.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-2 max-w-4xl mx-auto gap-8">
+            <!-- Starter -->
+            <div class="p-10 rounded-[2.5rem] border-2 border-gray-100 bg-white hover:border-brand-orange/20 transition-all reveal-left">
+                <div class="text-sm font-bold text-brand-orange uppercase tracking-widest mb-4">Starter</div>
+                <div class="text-5xl font-hero font-bold text-brand-dark mb-6">$19<span class="text-lg text-gray-400 font-normal">/mo</span></div>
+                <p class="text-gray-500 mb-8 font-noname">Perfect for individuals and side projects explore the power of AI outreach.</p>
+                <ul class="space-y-4 text-gray-600 mb-10">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> 100 Leads per day</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> Unlimited subreddits</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> AI Reply Generation</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> Reddit &amp; X Support</li>
+                </ul>
+                <button class="w-full py-4 bg-brand-dark text-white rounded-full font-bold hover:bg-brand-orange transition-colors">Start Free Trial</button>
+            </div>
+
+            <!-- Professional -->
+            <div class="p-10 rounded-[2.5rem] border-2 border-brand-orange bg-brand-bg relative shadow-2xl reveal-right">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-orange text-white text-xs font-bold px-6 py-2 rounded-full tracking-widest">MOST POPULAR</div>
+                <div class="text-sm font-bold text-brand-orange uppercase tracking-widest mb-4">Professional</div>
+                <div class="text-5xl font-hero font-bold text-brand-dark mb-6">$49<span class="text-lg text-gray-400 font-normal">/mo</span></div>
+                <p class="text-gray-500 mb-8 font-noname">For scaling teams that need unlimited potential and multi-channel dominance.</p>
+                <ul class="space-y-4 text-gray-600 mb-10">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> Unlimited Leads</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> Reddit, X &amp; LinkedIn</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> Custom Brand Voice</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> Priority Support</li>
+                </ul>
+                <button class="w-full py-4 bg-brand-orange text-white rounded-full font-bold hover:shadow-glow transition-all">Get Unlimited Access</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 px-6 mb-12">
+    <div class="max-w-5xl mx-auto rounded-[3rem] bg-brand-dark relative overflow-hidden p-12 lg:p-20 text-center">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-orange/20 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-purple/20 blur-[120px] rounded-full"></div>
+        
+        <div class="relative z-10">
+            <h2 class="text-4xl lg:text-6xl font-hero font-bold text-white mb-8 tracking-tight">Stop hunting. Start replying.</h2>
+            <p class="text-xl text-white/50 mb-12 max-w-2xl mx-auto">
+                Join thousands of founders finding their next 100 customers with AI-powered social listening.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="px-10 py-5 bg-white text-brand-dark rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-xl">Start for Free Today</button>
+                <button class="px-10 py-5 bg-white/10 text-white border border-white/20 rounded-full font-bold text-lg hover:bg-white/20 transition-all">Book a Workshop</button>
+            </div>
+            <p class="mt-8 text-white/30 text-sm">No credit card required. First 3 days on us.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Page specific logic if needed
+    });
+</script></main>
+
+    <footer class="bg-brand-dark text-white/70 py-16 text-sm">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-16">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-2 text-white mb-6">
+                    <i class="fa-solid fa-reply-all text-brand-orange text-xl"></i>
+                    <span class="font-logo font-bold text-2xl tracking-tight">AutoReply.ing</span>
+                </div>
+                <p class="text-gray-400 leading-relaxed">
+                    AI-powered outreach that helps you find customers where they are talking.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6">Product</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="hover:text-white transition">Reddit Monitoring</a></li>
+                    <li><a href="#" class="hover:text-white transition">X/Twitter Outreach</a></li>
+                    <li><a href="#" class="hover:text-white transition">LinkedIn Leads</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6">Company</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                    <li><a href="mailto:hello@autoreply.ing" class="hover:text-white transition">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6">Connect</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-orange transition"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-orange transition"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>© 2024 AutoReply.ing Labs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => observer.observe(el));
+
+            // Parallax
+            const parallaxElements = document.querySelectorAll('[data-parallax]');
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                parallaxElements.forEach(el => {
+                    const speed = parseFloat(el.getAttribute('data-parallax')) || 0.1;
+                    el.style.transform = `translateY(${scrollY * speed}px)`;
+                });
+            });
+
+            // Counters
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseInt(el.getAttribute('data-target'));
+                        let current = 0;
+                        const duration = 2000;
+                        const step = target / (duration / 16);
+                        const interval = setInterval(() => {
+                            current += step;
+                            if (current >= target) {
+                                el.innerText = target + (el.getAttribute('data-suffix') || '');
+                                clearInterval(interval);
+                            } else {
+                                el.innerText = Math.floor(current) + (el.getAttribute('data-suffix') || '');
+                            }
+                        }, 16);
+                        counterObserver.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+            document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+        });
+    </script>
+
+</body></html>
