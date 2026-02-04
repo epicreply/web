@@ -1,0 +1,35 @@
+# AutoReply.ing
+
+> AutoReply.ing is an AI-powered social media lead generation platform that monitors Reddit, X (Twitter), and LinkedIn 24/7 to find high-intent conversations where users are seeking products or services. It generates hyper-personalized, human-like replies to help businesses acquire customers through authentic social engagement.
+
+AutoReply.ing helps founders, marketers, and sales teams discover potential customers in real-time social conversations. The platform uses AI to scan millions of posts, identify buying intent signals, and craft contextually relevant responses that recommend your product naturally—without sounding spammy or automated.
+
+Key capabilities:
+- Multi-platform monitoring across Reddit, X/Twitter, and LinkedIn
+- AI-powered lead discovery based on custom keywords and topics
+- Hyper-personalized response generation that matches platform tone
+- One-click reply deployment to engage leads instantly
+- Custom brand voice configuration for consistent messaging
+- Dashboard analytics for tracking mentions, replies, and performance
+
+Target users include SaaS founders, indie hackers, startups, marketing teams, and agencies looking to generate organic leads through social listening and engagement.
+
+## Docs
+
+- [How It Works](https://autoreply.ing/#how-it-works): Step-by-step guide explaining the lead discovery and reply workflow
+- [Platforms](https://autoreply.ing/#features): Overview of supported social platforms (Reddit, X, LinkedIn) and their specific capabilities
+- [Pricing](https://autoreply.ing/#pricing): Current pricing plans including Starter ($19/mo) and Professional ($49/mo) tiers
+
+## Getting Started
+
+- [Sign Up](https://app.autoreply.ing/auth): Create a free account and start your trial
+- [Dashboard](https://app.autoreply.ing): Access the main application interface to configure monitoring and manage leads
+
+## Support
+
+- [Contact](mailto:hello@autoreply.ing): Email support for questions and assistance
+
+## Optional
+
+- [Privacy Policy](https://autoreply.ing/privacy): Data handling and privacy information
+- [Terms of Service](https://autoreply.ing/terms): Service terms and conditions
