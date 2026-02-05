@@ -1,434 +1,1810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoReply.ing - Find Customers on Reddit, X, and LinkedIn with AI</title>
+<meta name="description" content="AutoReply scans Reddit, X, and LinkedIn 24/7 to find people asking for what you sell — then generates human-sounding replies you send in one click. Start free.">
 
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoReply.ing - Find Customers on Reddit, X, and LinkedIn with AI</title>
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&amp;family=Inter:wght@400;500;600;700;900&amp;family=Outfit:wght@400;500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="styles.css"></head>
-<body id="app-root" class="antialiased overflow-x-hidden selection:bg-brand-orange selection:text-white font-sans bg-white">
+<meta property="og:title" content="AutoReply.ing - Find Customers on Reddit, X, and LinkedIn with AI">
+<meta property="og:description" content="AI scans social platforms 24/7 to find people who need your product — and helps you reply before competitors do.">
+<meta property="og:type" content="website">
 
-    <nav class="absolute w-full z-50 top-0 left-0 py-6 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-12">
-                <a href="/" class="flex items-center gap-2 text-brand-orange">
-                    <img src="/logo.png" alt="Autoreply Logo" class="h-8">
-                </a>
-                <div class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
-                    <a href="#how-it-works" class="hover:text-brand-orange transition">How it Works</a>
-                    <a href="#features" class="hover:text-brand-orange transition">Platforms</a>
-                    <a href="#pricing" class="hover:text-brand-orange transition">Pricing</a>
-                </div>
-            </div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-            <div class="flex items-center gap-4">
-                <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=homepage&utm_content=header_get_started_free" class="group relative bg-brand-dark p-[2px] rounded-full shadow-lg transition-all duration-300 hover:shadow-xl">
-                    <div class="relative w-full h-full rounded-full overflow-hidden bg-transparent flex items-center gap-3 pl-6 pr-1.5 py-1.5">
-                        <div class="absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full transition-transform duration-[1500ms] ease-out group-hover:scale-[30]"></div>
-                        <span class="relative z-10 text-white group-hover:text-brand-dark text-sm font-bold transition-colors duration-[1000ms]">Get Started Free</span>
-                        <div class="relative z-10 bg-white text-brand-dark w-8 h-8 rounded-full flex items-center justify-center">
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
+<style>
+/* ═══════════════════════════════════════════════
+   MONOBANK-INSPIRED DESIGN SYSTEM
+   Adapted for AutoReply.ing
+   ═══════════════════════════════════════════════ */
+
+:root {
+  /* Brand palette — monobank-style vibrant gradients */
+  --accent: #ff5e3a;
+  --accent-hover: #e84e2c;
+  --accent-soft: rgba(255, 94, 58, 0.08);
+  --accent-glow: rgba(255, 94, 58, 0.25);
+
+  /* Gradient hero — monobank uses purple-blue, we use orange-coral */
+  --grad-start: #ff5e3a;
+  --grad-mid: #ff8a5c;
+  --grad-end: #ffc15e;
+
+  /* Neutrals */
+  --black: #000000;
+  --white: #ffffff;
+  --text: #000000;
+  --text-secondary: rgba(0, 0, 0, 0.55);
+  --text-on-dark: #ffffff;
+  --text-on-dark-muted: rgba(255, 255, 255, 0.65);
+  --bg: #ffffff;
+  --bg-alt: #f7f7f8;
+  --border: #e9e9e9;
+  --border-light: rgba(255, 255, 255, 0.15);
+
+  /* Monobank spacing scale */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 56px;
+  --space-2xl: 80px;
+  --space-3xl: 128px;
+
+  /* Monobank radii — large, friendly, rounded */
+  --radius-sm: 16px;
+  --radius-md: 24px;
+  --radius-lg: 40px;
+  --radius-pill: 90px;
+
+  /* Layout */
+  --max-w: 1110px;
+  --gutter: 56px;
+
+  /* Font */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+
+/* ─── LAYOUT CONTAINER (monobank: 1110px max, 56px gutter) ─── */
+.layout {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ─── SECTION LINES (monobank pattern: line-1, line-2...) ─── */
+.line {
+  padding: var(--space-3xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.line--hero {
+  background: linear-gradient(180deg, var(--grad-start), var(--grad-mid) 60%, var(--grad-end));
+  color: var(--text-on-dark);
+  padding: 0 0 var(--space-2xl);
+  overflow: clip visible;
+}
+
+.line--dark {
+  background: var(--black);
+  color: var(--text-on-dark);
+}
+
+.line--alt {
+  background: var(--bg-alt);
+}
+
+/* ─── GLASSMORPHISM BLUR ORBS (monobank hero decoration) ─── */
+.hero-blur {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(150px);
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-blur--1 {
+  width: 600px; height: 600px;
+  background: rgba(255, 255, 255, 0.18);
+  top: -200px; right: -100px;
+}
+.hero-blur--2 {
+  width: 500px; height: 500px;
+  background: rgba(255, 200, 100, 0.2);
+  bottom: -150px; left: -100px;
+}
+
+/* ═══════════════════════════════════════════════
+   HEADER / NAV (monobank: 96px, pill links, sticky)
+   ═══════════════════════════════════════════════ */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--gutter);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  box-shadow: 0 1px 0 var(--border);
+}
+
+.header.scrolled .header__logo-text,
+.header.scrolled .header__link { color: var(--black); }
+.header.scrolled .header__cta { background: var(--black); color: var(--white); }
+
+.header__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__logo img { height: 28px; }
+
+.header__logo-text {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  transition: color 0.3s;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Monobank-style pill nav links */
+.header__link {
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  transition: all 0.2s;
+  background: transparent;
+}
+.header__link:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Monobank button: pill, bold, solid */
+.header__cta {
+  padding: 11px 24px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--black);
+  background: var(--white);
+  transition: all 0.2s;
+  line-height: 1.4;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.header__cta:hover {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+/* ═══════════════════════════════════════════════
+   HERO SECTION (monobank: bento grid, large type)
+   ═══════════════════════════════════════════════ */
+.hero {
+  padding-top: 160px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.hero__content { max-width: 520px; }
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-pill);
+  padding: 8px 18px 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: var(--space-md);
+}
+
+.hero__badge-dot {
+  width: 8px; height: 8px;
+  background: var(--white);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.hero__title {
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  margin-bottom: var(--space-md);
+}
+
+.hero__sub {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--text-on-dark-muted);
+  margin-bottom: var(--space-lg);
+  max-width: 440px;
+}
+
+.hero__ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Monobank buttons: size L, pill shape */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font);
+}
+
+.btn--lg { padding: 18px 32px; font-size: 17px; }
+.btn--md { padding: 13px 24px; font-size: 15px; }
+
+.btn--dark {
+  background: var(--black);
+  color: var(--white);
+}
+.btn--dark:hover { background: rgba(0, 0, 0, 0.75); }
+
+.btn--white {
+  background: var(--white);
+  color: var(--black);
+}
+.btn--white:hover { background: rgba(255, 255, 255, 0.88); }
+
+.btn--accent {
+  background: var(--accent);
+  color: var(--white);
+}
+.btn--accent:hover { background: var(--accent-hover); }
+
+.btn--outline {
+  background: transparent;
+  color: var(--white) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+.btn--outline:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.5); }
+
+.btn--outline-dark {
+  background: transparent;
+  color: var(--black);
+  border: 1px solid var(--border);
+}
+.btn--outline-dark:hover { border-color: #999; }
+
+.hero__meta {
+  margin-top: var(--space-sm);
+  font-size: 13px;
+  color: var(--text-on-dark-muted);
+}
+
+/* Hero product preview — monobank style card with shadow */
+.hero__visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero__screenshot {
+  border-radius: var(--radius-lg);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 560px;
+}
+
+/* ═══════════════════════════════════════════════
+   STATS STRIP (monobank dashboard tiles)
+   ═══════════════════════════════════════════════ */
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: -60px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+}
+
+.stat-tile {
+  background: var(--white);
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.stat-tile__num {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-tile__num--accent { color: var(--accent); }
+
+.stat-tile__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* ═══════════════════════════════════════════════
+   BENTO CARD GRID (monobank's signature pattern)
+   40px radius, gradient bg, hover opacity
+   ═══════════════════════════════════════════════ */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.bento--2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card {
+  background: linear-gradient(180deg, #f4f4f4 0%, rgba(255, 255, 255, 0) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.card:hover {
+  border-color: #ccc;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+/* Monobank hover background overlay */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 94, 58, 0.03) 0%, rgba(255, 94, 58, 0) 100%);
+  border-radius: var(--radius-lg);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.card:hover::after { opacity: 1; }
+
+.card--large { grid-column: span 2; }
+
+.card--dark {
+  background: var(--black);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-on-dark);
+}
+.card--dark:hover { border-color: rgba(255, 255, 255, 0.2); }
+
+/* Monobank icon circle: 72px, rounded */
+.card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+  font-size: 24px;
+}
+
+.card__icon--reddit { background: rgba(255, 69, 0, 0.08); }
+.card__icon--x { background: rgba(0, 0, 0, 0.06); }
+.card__icon--linkedin { background: rgba(0, 119, 181, 0.08); }
+.card__icon--orange { background: var(--accent-soft); }
+.card__icon--green { background: rgba(16, 185, 129, 0.08); }
+
+.card__step {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.card__title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.card__text {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.card--dark .card__text { color: var(--text-on-dark-muted); }
+
+.card__stat {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card__stat strong { color: var(--accent); }
+
+.card--dark .card__stat { border-top-color: rgba(255, 255, 255, 0.1); }
+
+/* ═══════════════════════════════════════════════
+   SECTION HEADERS (monobank: bold, tight tracking)
+   ═══════════════════════════════════════════════ */
+.section-header {
+  margin-bottom: var(--space-xl);
+}
+
+.section-header--center { text-align: center; }
+
+.section-label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.section-sub {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 520px;
+}
+
+.section-header--center .section-sub {
+  margin: 0 auto;
+}
+
+.line--dark .section-label { color: var(--accent); }
+.line--dark .section-sub { color: var(--text-on-dark-muted); }
+
+/* ═══════════════════════════════════════════════
+   LIVE PROOF EXAMPLES
+   ═══════════════════════════════════════════════ */
+.proof-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+.proof-card--dark {
+  background: #111;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.proof-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: var(--space-sm);
+}
+
+.proof-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+.proof-tag--reddit { background: rgba(255, 69, 0, 0.1); color: #e04000; }
+.proof-tag--x { background: rgba(0, 0, 0, 0.06); color: var(--black); }
+.proof-tag--linkedin { background: rgba(0, 119, 181, 0.1); color: #0077b5; }
+
+.proof-time {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.proof-post {
+  font-size: 15px;
+  color: var(--text-secondary);
+  padding-left: var(--space-sm);
+  border-left: 3px solid var(--border);
+  margin-bottom: var(--space-sm);
+  line-height: 1.65;
+}
+
+.proof-reply {
+  background: var(--white);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  font-size: 15px;
+  line-height: 1.65;
+  position: relative;
+}
+.proof-card--dark .proof-reply {
+  background: #1a1a1a;
+  border-color: rgba(16, 185, 129, 0.2);
+  color: rgba(255,255,255,0.85);
+}
+.proof-card--dark .proof-post {
+  color: var(--text-on-dark-muted);
+  border-left-color: rgba(255,255,255,0.1);
+}
+.proof-card--dark .proof-time { color: var(--text-on-dark-muted); }
+
+.proof-reply__badge {
+  position: absolute;
+  top: -10px; left: 14px;
+  background: #10b981;
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════
+   COMPARISON TABLE (monobank card style)
+   ═══════════════════════════════════════════════ */
+.compare-wrap {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.compare-table th,
+.compare-table td {
+  text-align: left;
+  padding: 16px 24px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--border);
+}
+
+.compare-table thead th {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--white);
+}
+
+.compare-table tbody tr:last-child td { border-bottom: none; }
+
+.compare-table td:first-child { color: var(--text-secondary); font-weight: 500; }
+.compare-table .check { color: #10b981; font-weight: 700; }
+.compare-table .x-mark { color: #d1d5db; }
+.compare-table .you-col { background: rgba(255, 94, 58, 0.04); font-weight: 600; }
+
+/* ═══════════════════════════════════════════════
+   PRICING (monobank bento split)
+   ═══════════════════════════════════════════════ */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  max-width: 720px;
+}
+
+.price-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  background: var(--white);
+  position: relative;
+  transition: all 0.3s ease;
+}
+.price-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.price-card--featured {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, #fff5f2 0%, var(--white) 100%);
+}
+
+.price-card__badge {
+  position: absolute;
+  top: -12px; right: 20px;
+  background: var(--accent);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+}
+
+.price-card__name {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.price-card__amount {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.price-card__amount span {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.price-card__desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin: 12px 0 24px;
+  line-height: 1.5;
+}
+
+.price-card__features {
+  list-style: none;
+  margin-bottom: 28px;
+}
+.price-card__features li {
+  font-size: 15px;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+.price-card__features li::before {
+  content: '\2713';
+  color: #10b981;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.price-card__btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 16px;
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  font-weight: 700;
+  transition: all 0.2s;
+  font-family: var(--font);
+  border: none;
+  cursor: pointer;
+}
+
+/* ═══════════════════════════════════════════════
+   FAQ — monobank accordion style
+   ═══════════════════════════════════════════════ */
+.faq-list { max-width: 720px; }
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+  background: none;
+  border: none;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font);
+  line-height: 1.4;
+  transition: color 0.2s;
+  letter-spacing: -0.01em;
+}
+.faq-q:hover { color: var(--accent); }
+
+.faq-icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--text-secondary);
+  transition: all 0.3s;
+  flex-shrink: 0;
+  margin-left: var(--space-sm);
+}
+
+.faq-item.open .faq-icon {
+  background: var(--accent);
+  color: var(--white);
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+.faq-item.open .faq-a {
+  max-height: 250px;
+  padding-bottom: 22px;
+}
+
+.faq-a p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════
+   FINAL CTA (monobank dark card with glow)
+   ═══════════════════════════════════════════════ */
+.cta-block {
+  background: var(--black);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-block__blur {
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+.cta-block__blur--1 { background: rgba(255, 94, 58, 0.2); top: -150px; right: -100px; }
+.cta-block__blur--2 { background: rgba(255, 140, 90, 0.15); bottom: -150px; left: -100px; }
+
+.cta-block__inner { position: relative; z-index: 1; }
+
+.cta-block__title {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.cta-block__sub {
+  font-size: 17px;
+  color: var(--text-on-dark-muted);
+  margin-bottom: var(--space-lg);
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-block__meta {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-on-dark-muted);
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER (monobank: black bg, 3-col, muted links)
+   ═══════════════════════════════════════════════ */
+.footer {
+  background: var(--black);
+  color: var(--text-on-dark);
+  padding: var(--space-xl) 0;
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__left {
+  font-size: 14px;
+  color: var(--text-on-dark-muted);
+}
+
+.footer__links {
+  display: flex;
+  gap: 28px;
+}
+
+.footer__links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.2s;
+}
+.footer__links a:hover { color: var(--accent); }
+
+/* ═══════════════════════════════════════════════
+   ANIMATIONS (monobank: translateY(50px), .3s ease)
+   ═══════════════════════════════════════════════ */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.m-animate {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  backface-visibility: hidden;
+}
+
+.m-animate.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children */
+.m-animate-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.m-animate-stagger.active > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: none; }
+.m-animate-stagger.active > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: none; }
+.m-animate-stagger.active > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: none; }
+.m-animate-stagger.active > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: none; }
+
+/* Hero entrance — slightly different */
+.hero-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroEnter 0.7s ease forwards;
+}
+
+.hero-animate--delay-1 { animation-delay: 0.1s; }
+.hero-animate--delay-2 { animation-delay: 0.2s; }
+.hero-animate--delay-3 { animation-delay: 0.3s; }
+.hero-animate--delay-4 { animation-delay: 0.45s; }
+
+@keyframes heroEnter {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════
+   MOBILE MENU (hidden on desktop)
+   ═══════════════════════════════════════════════ */
+.header__menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.header__menu-btn:hover { background: rgba(255, 255, 255, 0.1); }
+.header.scrolled .header__menu-btn { color: var(--black); }
+
+.header__mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  padding: 8px 20px 20px;
+  flex-direction: column;
+  gap: 0;
+}
+
+.header__mobile-menu.open {
+  display: flex;
+}
+
+.header__mobile-link {
+  display: block;
+  padding: 14px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  transition: color 0.15s;
+}
+.header__mobile-link:hover { color: var(--accent); }
+
+.header__mobile-cta {
+  display: block;
+  margin-top: 14px;
+  padding: 14px 0;
+  text-align: center;
+  background: var(--accent);
+  color: var(--white);
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  font-weight: 700;
+  transition: background 0.2s;
+}
+.header__mobile-cta:hover { background: var(--accent-hover); }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — TABLET (monobank: 920px breakpoint)
+   ═══════════════════════════════════════════════ */
+@media (max-width: 920px) {
+  :root {
+    --gutter: 24px;
+    --space-3xl: 64px;
+    --space-2xl: 48px;
+  }
+
+  .hero__grid { grid-template-columns: 1fr; text-align: center; }
+  .hero__content { max-width: 100%; margin: 0 auto; }
+  .hero__sub { margin-left: auto; margin-right: auto; }
+  .hero__ctas { justify-content: center; }
+  .hero__visual { margin-top: var(--space-lg); }
+  .hero__screenshot { max-width: 480px; margin: 0 auto; }
+
+  .hero__title { font-size: 38px; }
+  .section-title { font-size: 32px; }
+
+  .stats-strip { grid-template-columns: repeat(2, 1fr); margin-top: -40px; }
+  .bento { grid-template-columns: 1fr; }
+  .bento--2col { grid-template-columns: 1fr; }
+  .card--large { grid-column: span 1; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+  .compare-table th, .compare-table td { padding: 12px 14px; font-size: 13px; }
+  .header__link { display: none; }
+  .header__menu-btn { display: flex; }
+  .footer__inner { flex-direction: column; gap: 16px; text-align: center; }
+  .cta-block__title { font-size: 32px; }
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — MOBILE (< 640px)
+   ═══════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  :root {
+    --gutter: 20px;
+    --space-3xl: 48px;
+    --space-2xl: 40px;
+    --space-xl: 36px;
+    --space-lg: 28px;
+  }
+
+  /* ── HEADER: compact, hamburger replaces CTA ── */
+  .header {
+    min-height: 56px;
+    padding: 0 16px;
+  }
+  .header__inner { position: relative; }
+  .header__logo img { height: 24px; }
+  .header__cta { display: none; }
+  .header__menu-btn { display: flex; }
+
+  /* ── HERO: tighter, readable ── */
+  .hero {
+    padding-top: 100px;
+    padding-bottom: 0;
+  }
+
+  .line--hero {
+    padding-bottom: var(--space-xl);
+  }
+
+  .hero__badge {
+    font-size: 12px;
+    padding: 6px 14px 6px 10px;
+    margin-bottom: 20px;
+  }
+
+  .hero__title {
+    font-size: 28px;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    margin-bottom: 16px;
+  }
+
+  .hero__sub {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  /* ── HERO BUTTONS: side-by-side, compact ── */
+  .hero__ctas {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .hero__ctas .btn {
+    padding: 14px 20px;
+    font-size: 14px;
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  /* Fix outline button: white text on gradient bg */
+  .hero__ctas .btn--outline {
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  .hero__meta {
+    font-size: 12px;
+    margin-top: 12px;
+  }
+
+  /* ── HERO SCREENSHOT: tighter ── */
+  .hero__visual {
+    margin-top: 28px;
+  }
+
+  .hero__screenshot {
+    max-width: 100%;
+    border-radius: var(--radius-md);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+  }
+
+  /* ── BLUR ORBS: smaller on mobile ── */
+  .hero-blur--1 { width: 300px; height: 300px; top: -100px; right: -80px; }
+  .hero-blur--2 { width: 250px; height: 250px; bottom: -80px; left: -60px; }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: -32px;
+    border-radius: var(--radius-md);
+  }
+
+  .stat-tile {
+    padding: 18px 12px;
+  }
+
+  .stat-tile__num {
+    font-size: 26px;
+  }
+
+  .stat-tile__label {
+    font-size: 12px;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-title {
+    font-size: 24px;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  .section-sub {
+    font-size: 15px;
+  }
+
+  .section-header {
+    margin-bottom: var(--space-lg);
+  }
+
+  /* ── CARDS ── */
+  .card {
+    padding: 24px 20px;
+    border-radius: var(--radius-md);
+  }
+
+  .card__icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 16px;
+  }
+
+  .card__title { font-size: 17px; }
+  .card__text { font-size: 14px; }
+  .card__step { font-size: 11px; }
+
+  /* ── PROOF CARDS ── */
+  .proof-card {
+    padding: 20px;
+    border-radius: var(--radius-md);
+  }
+
+  .proof-post { font-size: 14px; }
+  .proof-reply { font-size: 14px; padding: 14px; }
+  .proof-tag { font-size: 10px; padding: 3px 8px; }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-wrap {
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .compare-table {
+    min-width: 480px;
+  }
+
+  .compare-table th,
+  .compare-table td {
+    padding: 10px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* ── PRICING ── */
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    gap: 16px;
+  }
+
+  .price-card {
+    padding: 24px 20px;
+    border-radius: var(--radius-md);
+  }
+
+  .price-card__amount { font-size: 40px; }
+  .price-card__desc { font-size: 14px; }
+  .price-card__features li { font-size: 14px; }
+
+  .price-card__btn {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  /* ── FAQ ── */
+  .faq-q {
+    font-size: 15px;
+    padding: 18px 0;
+  }
+
+  .faq-a p { font-size: 14px; }
+
+  .faq-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 15px;
+  }
+
+  /* ── FINAL CTA ── */
+  .cta-block {
+    padding: var(--space-xl) 20px;
+    border-radius: var(--radius-md);
+  }
+
+  .cta-block__title {
+    font-size: 26px;
+    line-height: 1.12;
+  }
+
+  .cta-block__sub {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  .cta-block .btn--lg {
+    padding: 14px 28px;
+    font-size: 15px;
+  }
+
+  /* ── FOOTER ── */
+  .footer { padding: var(--space-lg) 0; }
+  .footer__inner { flex-direction: column; gap: 12px; text-align: center; }
+  .footer__left { font-size: 13px; }
+  .footer__links { gap: 20px; }
+  .footer__links a { font-size: 13px; }
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — SMALL PHONES (< 380px)
+   ═══════════════════════════════════════════════ */
+@media (max-width: 380px) {
+  :root { --gutter: 16px; }
+
+  .hero__title { font-size: 24px; }
+  .hero__sub { font-size: 14px; }
+
+  .hero__ctas {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero__ctas .btn {
+    flex: auto;
+    width: 100%;
+  }
+
+  .stat-tile__num { font-size: 22px; }
+  .section-title { font-size: 22px; }
+  .cta-block__title { font-size: 22px; }
+  .price-card__amount { font-size: 36px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     HEADER (monobank: fixed, glass, pill links)
+     ═══════════════════════════════════════════════ -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="/" class="header__logo">
+      <img src="logo.png" alt="AutoReply.ing">
+    </a>
+    <nav class="header__nav">
+      <a href="#how" class="header__link">How it works</a>
+      <a href="#platforms" class="header__link">Platforms</a>
+      <a href="#pricing" class="header__link">Pricing</a>
+      <a href="#faq" class="header__link">FAQ</a>
+      <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=v4&utm_content=nav" class="header__cta">Start free trial</a>
+      <!-- Mobile menu toggle -->
+      <button class="header__menu-btn" id="menuBtn" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </nav>
 
-    <main><section class="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden bg-brand-bg">
-    <!-- Grid BG -->
-    <div class="absolute inset-0 bg-grid-pattern opacity-40 z-0"></div>
-    
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="text-center max-w-4xl mx-auto reveal">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 shadow-sm mb-8">
-                <span class="flex h-2 w-2 rounded-full bg-brand-green animate-pulse"></span>
-                <span class="text-xs font-bold text-gray-600 uppercase tracking-widest">Backed by AI Innovation</span>
-            </div>
-            
-            <h1 class="font-hero font-extrabold text-5xl lg:text-7xl text-brand-dark tracking-tight leading-[1.05] mb-8">
-                Find new customers on <span class="text-brand-orange">Reddit, X, and LinkedIn</span> with AI.
-            </h1>
-
-            <p class="text-xl text-gray-500 mb-12 leading-relaxed max-w-2xl mx-auto">
-                AutoReply.ing scans social platforms 24/7 to find people asking for what you're selling-and helps you reply with perfect, human-like AI responses.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=homepage&utm_content=hero_start_free_trial" class="group relative bg-brand-dark p-[2px] rounded-full shadow-2xl hover:scale-105 transition-all duration-300">
-                    <div class="relative w-full h-full rounded-full overflow-hidden bg-transparent flex items-center gap-4 pl-10 pr-2 py-3">
-                        <div class="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 bg-white rounded-full transition-transform duration-[1500ms] ease-out group-hover:scale-[35]"></div>
-                        <span class="relative z-10 text-white group-hover:text-brand-dark font-bold text-lg transition-colors duration-[1000ms]">Start Free Trial</span>
-                        <span class="relative z-10 bg-white text-brand-dark w-11 h-11 rounded-full flex items-center justify-center">
-                            <i class="fa-solid fa-arrow-right text-sm"></i>
-                        </span>
-                    </div>
-                </a>
-                <button class="px-8 py-4 text-brand-dark font-bold hover:text-brand-orange transition-colors flex items-center gap-2">
-                    <i class="fa-solid fa-play-circle text-xl"></i> See How it Works
-                </button>
-            </div>
-            
-            <!-- <p class="mt-6 text-sm text-gray-400">No credit card required • Instant setup</p> -->
-        </div>
-
-        <!-- Dashboard Preview -->
-        <div class="mt-24 relative reveal-scale">
-            <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-4/5 h-20 bg-brand-orange/20 blur-3xl opacity-50 -z-10"></div>
-            <div class="overflow-hidden relative">
-                <img src="/demo-screenshot.png" alt="AutoReply Dashboard" class="w-full">
-                
-                <!-- Floating Elements -->
-                <div class="absolute top-10 right-10 w-64 bg-white/90 backdrop-blur rounded-2xl p-4 shadow-xl border border-white/20 hidden lg:block" data-parallax="-0.05">
-                    <div class="flex items-center gap-3 mb-2">
-                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600"><i class="fa-brands fa-twitter"></i></div>
-                        <div class="text-xs font-bold">New Lead Found</div>
-                    </div>
-                    <p class="text-[10px] text-gray-500 leading-snug">"Does anyone know a good alternative to Salesforce for small teams?"</p>
-                </div>
-            </div>
-        </div>
+    <!-- Mobile dropdown -->
+    <div class="header__mobile-menu" id="mobileMenu">
+      <a href="#how" class="header__mobile-link">How it works</a>
+      <a href="#platforms" class="header__mobile-link">Platforms</a>
+      <a href="#pricing" class="header__mobile-link">Pricing</a>
+      <a href="#faq" class="header__mobile-link">FAQ</a>
+      <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=v4&utm_content=nav_mobile" class="header__mobile-cta">Start free trial &rarr;</a>
     </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════
+     LINE 1: HERO (monobank gradient + bento split)
+     ═══════════════════════════════════════════════ -->
+<section class="line line--hero">
+  <!-- Monobank-style blur orbs -->
+  <div class="hero-blur hero-blur--1"></div>
+  <div class="hero-blur hero-blur--2"></div>
+
+  <div class="layout hero">
+    <div class="hero__grid">
+      <div class="hero__content">
+        <div class="hero__badge hero-animate">
+          <span class="hero__badge-dot"></span>
+          Monitoring 3 platforms 24/7
+        </div>
+
+        <h1 class="hero__title hero-animate hero-animate--delay-1">
+          Your next customers are asking for help right now
+        </h1>
+
+        <p class="hero__sub hero-animate hero-animate--delay-2">
+          AutoReply scans Reddit, X, and LinkedIn to find people who need what you sell &mdash; then writes human-sounding replies you send in one click.
+        </p>
+
+        <div class="hero__ctas hero-animate hero-animate--delay-3">
+          <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=v4&utm_content=hero" class="btn btn--white btn--lg">Start free trial &rarr;</a>
+          <a href="#how" class="btn btn--outline btn--lg">How it works</a>
+        </div>
+
+        <p class="hero__meta hero-animate hero-animate--delay-4">No credit card required &middot; 2-minute setup</p>
+      </div>
+
+      <div class="hero__visual hero-animate hero-animate--delay-4">
+        <img src="demo-screenshot.png" alt="AutoReply.ing dashboard" class="hero__screenshot">
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- LOGO CLOUD -->
-<section class="py-12 border-y border-gray-100 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6">
-        <p class="text-center text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-10">Trusted by founders worldwide</p>
-        <div class="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-40 grayscale">
-            <i class="fa-brands fa-slack text-4xl"></i>
-            <i class="fa-brands fa-product-hunt text-4xl"></i>
-            <i class="fa-brands fa-stripe text-4xl"></i>
-            <i class="fa-brands fa-discord text-4xl"></i>
-            <i class="fa-brands fa-github text-4xl"></i>
-        </div>
+<!-- ═══════════════════════════════════════════════
+     STATS STRIP (monobank dashboard tiles)
+     ═══════════════════════════════════════════════ -->
+<div class="layout">
+  <div class="stats-strip m-animate">
+    <div class="stat-tile">
+      <div class="stat-tile__num stat-tile__num--accent">30%+</div>
+      <div class="stat-tile__label">Reply rate</div>
     </div>
+    <div class="stat-tile">
+      <div class="stat-tile__num">24/7</div>
+      <div class="stat-tile__label">Monitoring</div>
+    </div>
+    <div class="stat-tile">
+      <div class="stat-tile__num">&lt;5 min</div>
+      <div class="stat-tile__label">Setup time</div>
+    </div>
+    <div class="stat-tile">
+      <div class="stat-tile__num">3</div>
+      <div class="stat-tile__label">Platforms</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     LINE 2: HOW IT WORKS (monobank bento cards)
+     ═══════════════════════════════════════════════ -->
+<section id="how" class="line">
+  <div class="layout">
+    <div class="section-header m-animate">
+      <div class="section-label">How it works</div>
+      <div class="section-title">Three steps. Five minutes.<br>Leads on autopilot.</div>
+      <p class="section-sub">Tell us what to look for. We handle everything else.</p>
+    </div>
+
+    <div class="bento m-animate-stagger m-animate">
+      <div class="card">
+        <div class="card__icon card__icon--orange">
+          <svg width="24" height="24" fill="none" stroke="#ff5e3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="card__step">Step 01</div>
+        <div class="card__title">Describe your product</div>
+        <p class="card__text">Add keywords, topics, or pain points. AutoReply learns what buying intent looks like for your niche.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__icon card__icon--green">
+          <svg width="24" height="24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="card__step">Step 02</div>
+        <div class="card__title">AI finds conversations</div>
+        <p class="card__text">We scan Reddit, X, and LinkedIn 24/7 &mdash; filtering millions of posts to find people who need your product right now.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__icon card__icon--orange">
+          <svg width="24" height="24" fill="none" stroke="#ff5e3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="card__step">Step 03</div>
+        <div class="card__title">Review &amp; reply in one click</div>
+        <p class="card__text">Get hyper-personalized, human-sounding replies. Edit if you want, then post. Nothing goes live without your approval.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how-it-works" class="py-24 bg-white relative">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-20 reveal">
-            <h2 class="text-4xl lg:text-5xl font-hero font-bold text-brand-dark mb-6 tracking-tight">How it works</h2>
-            <p class="text-gray-500 text-lg max-w-2xl mx-auto">From setup to results in 3 simple steps. Our AI handles the heavy lifting.</p>
-        </div>
-
-        <div class="grid lg:grid-cols-3 gap-12 relative">
-            <!-- Step 1 -->
-            <div class="relative reveal-scale">
-                <div class="w-16 h-16 rounded-2xl bg-brand-orange/10 flex items-center justify-center text-brand-orange text-2xl font-bold mb-8">1</div>
-                <h3 class="text-2xl font-bold text-brand-dark mb-4">Set Your Targets</h3>
-                <p class="text-gray-500 leading-relaxed font-noname">Tell AutoReply what keywords or topics to monitor. Define your niche and the exact conversations you want to be part of.</p>
-                <div class="mt-8 bg-gray-50 rounded-xl p-6 border border-gray-100 font-mono text-xs text-gray-400">
-                    "Looking for: SaaS tools, CRM alternatives, help with sales..."
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="relative reveal-scale delay-75">
-                <div class="w-16 h-16 rounded-2xl bg-brand-purple/10 flex items-center justify-center text-brand-purple text-2xl font-bold mb-8">2</div>
-                <h3 class="text-2xl font-bold text-brand-dark mb-4">AI Finds Leads</h3>
-                <p class="text-gray-500 leading-relaxed font-noname">Our AI scans Reddit, X, and LinkedIn 24/7. It filters through millions of posts to find high-intent users who need your solution right now.</p>
-                <div class="mt-8 bg-brand-bg rounded-xl p-6 border border-gray-100 flex items-start gap-3">
-                    <img src="https://images.unsplash.com/photo-1701463387028-3947648f1337?ixid=M3w4NjU0NDF8MHwxfHNlYXJjaHwxfHxQcm9mZXNzaW9uYWwlMjBwcm9maWxlJTIwYXZhdGFyfGVufDB8fHx8MTc2OTg5MzM5MXww&amp;ixlib=rb-4.1.0&amp;w=40&amp;h=40&amp;fit=crop&amp;fm=jpg&amp;q=80" class="w-10 h-10 rounded-full" alt="Avatar">
-                    <div>
-                        <div class="text-[10px] font-bold text-brand-dark">Reddit u/dev_mike</div>
-                        <div class="text-xs text-gray-500 italic">"I'm struggling to find a tool for..."</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="relative reveal-scale delay-150">
-                <div class="w-16 h-16 rounded-2xl bg-brand-green/10 flex items-center justify-center text-brand-green text-2xl font-bold mb-8">3</div>
-                <h3 class="text-2xl font-bold text-brand-dark mb-4">Deploy Perfect Replies</h3>
-                <p class="text-gray-500 leading-relaxed font-noname">AutoReply generates hyper-personalized responses that sound human. One click to post and land in their primary inbox or notifications.</p>
-                <div class="mt-8 bg-brand-dark rounded-xl p-6 shadow-xl">
-                    <div class="text-[10px] font-bold text-white/50 mb-2 uppercase">AI Suggestion</div>
-                    <div class="text-xs text-white/90 leading-normal">"Hey Mike! For that specific use case, check out AutoReply. It actually handles..."</div>
-                </div>
-            </div>
-        </div>
+<!-- ═══════════════════════════════════════════════
+     LINE 3: PLATFORMS (monobank feature bento)
+     ═══════════════════════════════════════════════ -->
+<section id="platforms" class="line line--alt">
+  <div class="layout">
+    <div class="section-header m-animate">
+      <div class="section-label">Platforms</div>
+      <div class="section-title">Where your customers are already talking.</div>
+      <p class="section-sub">Most tools only cover Reddit. We monitor the three platforms where buying decisions happen.</p>
     </div>
+
+    <div class="bento m-animate-stagger m-animate">
+      <div class="card">
+        <div class="card__icon card__icon--reddit">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#FF4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+        </div>
+        <div class="card__title">Reddit</div>
+        <p class="card__text">Monitor subreddits and keywords. Find people asking for recommendations, alternatives, and solutions.</p>
+        <div class="card__stat"><strong>52%</strong> of leads from recommendation threads</div>
+      </div>
+
+      <div class="card">
+        <div class="card__icon card__icon--x">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#1c1917"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </div>
+        <div class="card__title">X / Twitter</div>
+        <p class="card__text">Catch real-time requests and complaints. Reply to threads where people are actively looking for tools.</p>
+        <div class="card__stat"><strong>3x</strong> faster response vs. manual monitoring</div>
+      </div>
+
+      <div class="card">
+        <div class="card__icon card__icon--linkedin">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </div>
+        <div class="card__title">LinkedIn</div>
+        <p class="card__text">Find B2B decision-makers discussing challenges. Build authority by adding value to industry conversations.</p>
+        <div class="card__stat"><strong>Professional</strong> plan only</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- PLATFORMS SECTION -->
-<section id="features" class="py-24 bg-brand-dark text-white overflow-hidden relative">
-    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-orange via-brand-purple to-brand-green"></div>
-    
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-20 items-center">
-            <div class="reveal-left">
-                <h2 class="text-4xl lg:text-6xl font-hero font-bold mb-8 tracking-tight">The social platforms where your customers hang out.</h2>
-                
-                <div class="space-y-8">
-                    <div class="flex gap-6">
-                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl text-[#FF4500]"><i class="fa-brands fa-reddit-alien"></i></div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">Reddit Monitoring</h4>
-                            <p class="text-gray-400 font-noname">Monitor specific subreddits or keywords. Autoreply style discovery with better intelligence.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-6">
-                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl text-[#1DA1F2]"><i class="fa-brands fa-twitter"></i></div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">X/Twitter Outreach</h4>
-                            <p class="text-gray-400 font-noname">Capture people asking for recommendations in real-time. Jump into the conversation first.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-6">
-                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl text-[#0077B5]"><i class="fa-brands fa-linkedin-in"></i></div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">LinkedIn Authority</h4>
-                            <p class="text-gray-400 font-noname">Build trust by replying to industry influencers and finding B2B decision makers.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative reveal-right">
-                <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl">
-                    <div class="grid grid-cols-2 gap-8 mb-12">
-                        <div class="text-center">
-                            <div class="text-5xl font-hero font-bold text-brand-orange counter" data-target="35" data-suffix="%">0%</div>
-                            <div class="text-xs text-gray-500 mt-2 uppercase font-bold tracking-widest">Avg. Reply Rate</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-5xl font-hero font-bold text-brand-green counter" data-target="24" data-suffix="/7">0/7</div>
-                            <div class="text-xs text-gray-500 mt-2 uppercase font-bold tracking-widest">Monitoring</div>
-                        </div>
-                    </div>
-                    
-                    <div class="rounded-2xl bg-brand-dark p-6 border border-white/5">
-                        <p class="text-gray-400 text-sm mb-4 font-mono">// System Output</p>
-                        <p class="text-green-400 font-mono text-xs mb-2">&gt; Searching r/startups...</p>
-                        <p class="text-green-400 font-mono text-xs mb-2">&gt; 12 New conversations found</p>
-                        <p class="text-green-400 font-mono text-xs">&gt; Generating personalized context...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- ═══════════════════════════════════════════════
+     LINE 4: LIVE PROOF (monobank dark section)
+     ═══════════════════════════════════════════════ -->
+<section class="line line--dark">
+  <div class="layout">
+    <div class="section-header m-animate">
+      <div class="section-label">Real results</div>
+      <div class="section-title" style="color:#fff">See it in action. Replies that actually convert.</div>
+      <p class="section-sub">Our AI reads the full context of every post &mdash; not just keywords. That&rsquo;s why it sounds human.</p>
     </div>
+
+    <div class="bento bento--2col m-animate-stagger m-animate">
+      <div class="proof-card proof-card--dark">
+        <div class="proof-meta">
+          <span class="proof-tag proof-tag--reddit">Reddit</span>
+          <span class="proof-time">r/startups &middot; 4 min ago</span>
+        </div>
+        <div class="proof-post">"We're a 5-person team and Salesforce is overkill. Anyone know a simpler CRM that actually works for small teams without the enterprise bloat?"</div>
+        <div class="proof-reply">
+          <span class="proof-reply__badge">AI reply</span>
+          Totally get that &mdash; Salesforce is a lot when you're small. We switched to [YourProduct] about 3 months ago and it's been great. Dead simple pipeline management, integrates with Slack, and it's like $15/seat. The onboarding took maybe 20 minutes.
+        </div>
+      </div>
+
+      <div class="proof-card proof-card--dark">
+        <div class="proof-meta">
+          <span class="proof-tag proof-tag--x">X / Twitter</span>
+          <span class="proof-time">@sarahfounder &middot; 12 min ago</span>
+        </div>
+        <div class="proof-post">"Need a tool to handle customer support without hiring another person. Any recs?"</div>
+        <div class="proof-reply">
+          <span class="proof-reply__badge">AI reply</span>
+          We ran into the same thing at our startup. Been using [YourProduct] for AI-powered ticket routing &mdash; handles about 70% of basic queries automatically. Saved us from hiring for 6 months. Happy to share our setup!
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16 reveal">
-            <h2 class="text-4xl font-hero font-bold text-brand-dark mb-4">Go beyond simple {{first_name}}</h2>
-            <p class="text-gray-500 text-lg">See the results from actual users who switched to AutoReply.</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Review 1 -->
-            <div class="p-8 rounded-3xl border border-gray-100 bg-brand-bg reveal-scale">
-                <div class="flex gap-1 text-brand-yellow mb-6">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <p class="text-gray-600 font-medium mb-8 leading-relaxed italic">"The response rate is insane. We're hitting 30%+ consistently because the AI actually reads the context of the Reddit post."</p>
-                <div class="flex items-center gap-4">
-                    <img src="https://images.unsplash.com/photo-1547757555-8b9048aa4369?ixid=M3w4NjU0NDF8MHwxfHNlYXJjaHwxfHxQb3J0cmFpdCUyMG9mJTIwYSUyMHlvdW5nJTIwbWFsZSUyMGZvdW5kZXIlMjBzbWlsaW5nfGVufDB8fHx8MTc2OTg5MzQwMXww&amp;ixlib=rb-4.1.0&amp;w=60&amp;h=60&amp;fit=crop&amp;fm=jpg&amp;q=80" class="w-12 h-12 rounded-full" alt="Founder">
-                    <div>
-                        <div class="font-bold text-brand-dark">Alex Thorne</div>
-                        <div class="text-xs text-gray-400">Founder @ SaasBox</div>
-                    </div>
-                </div>
-            </div>
-            <!-- Review 2 -->
-            <div class="p-8 rounded-3xl border border-gray-100 bg-brand-bg reveal-scale delay-75">
-                <div class="flex gap-1 text-brand-yellow mb-6">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <p class="text-gray-600 font-medium mb-8 leading-relaxed italic">"Better than Popsy. The LinkedIn support changed everything for our sales team. It's like having a 24/7 SDR."</p>
-                <div class="flex items-center gap-4">
-                    <img src="https://images.unsplash.com/photo-1649589244330-09ca58e4fa64?ixid=M3w4NjU0NDF8MHwxfHNlYXJjaHwxfHxQb3J0cmFpdCUyMG9mJTIwcHJvZmVzc2lvbmFsJTIwd29tYW58ZW58MHx8fHwxNzY5ODkzNDAxfDA&amp;ixlib=rb-4.1.0&amp;w=60&amp;h=60&amp;fit=crop&amp;fm=jpg&amp;q=80" class="w-12 h-12 rounded-full" alt="CMO">
-                    <div>
-                        <div class="font-bold text-brand-dark">Sarah Jenks</div>
-                        <div class="text-xs text-gray-400">CMO @ GrowthLabs</div>
-                    </div>
-                </div>
-            </div>
-            <!-- Review 3 -->
-            <div class="p-8 rounded-3xl border border-gray-100 bg-brand-bg reveal-scale delay-150">
-                <div class="flex gap-1 text-brand-yellow mb-6">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <p class="text-gray-600 font-medium mb-8 leading-relaxed italic">"I was skeptical of AI outreach, but these replies sound human. They add value before they link the product."</p>
-                <div class="flex items-center gap-4">
-                    <img src="https://images.unsplash.com/photo-1734896454854-51b77c9647e7?ixid=M3w4NjU0NDF8MHwxfHNlYXJjaHwxfHxNYW4lMjBpbiUyMGNhc3VhbCUyMHRlY2glMjBhdHRpcmV8ZW58MHx8fHwxNzY5ODkzNDAxfDA&amp;ixlib=rb-4.1.0&amp;w=60&amp;h=60&amp;fit=crop&amp;fm=jpg&amp;q=80" class="w-12 h-12 rounded-full" alt="Dev">
-                    <div>
-                        <div class="font-bold text-brand-dark">Mike Ross</div>
-                        <div class="text-xs text-gray-400">Indie Hacker</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- ═══════════════════════════════════════════════
+     LINE 5: COMPARISON (monobank table in card)
+     ═══════════════════════════════════════════════ -->
+<section class="line">
+  <div class="layout">
+    <div class="section-header m-animate">
+      <div class="section-label">Why AutoReply</div>
+      <div class="section-title">The only multi-platform AI outreach tool at this price.</div>
     </div>
+
+    <div class="compare-wrap m-animate">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="you-col">AutoReply.ing</th>
+            <th>Popsy</th>
+            <th>Replymer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Reddit monitoring</td>
+            <td class="you-col check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>X / Twitter</td>
+            <td class="you-col check">&#10003;</td>
+            <td class="x-mark">&#10007;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>LinkedIn</td>
+            <td class="you-col check">&#10003;</td>
+            <td class="x-mark">&#10007;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>AI-generated replies</td>
+            <td class="you-col check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="x-mark">&#10007; manual</td>
+          </tr>
+          <tr>
+            <td>Instant self-serve</td>
+            <td class="you-col check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="x-mark">&#10007; managed</td>
+          </tr>
+          <tr>
+            <td>Custom brand voice</td>
+            <td class="you-col check">&#10003;</td>
+            <td class="x-mark">&#10007;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Starting price</td>
+            <td class="you-col" style="font-weight:800; color:var(--accent)">$19/mo</td>
+            <td>$19/mo</td>
+            <td>$99/mo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
-<!-- PRICING -->
-<section id="pricing" class="py-24 bg-white relative">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16 reveal">
-            <h2 class="text-4xl font-hero font-bold text-brand-dark mb-4">Simple, transparent pricing</h2>
-            <p class="text-gray-500 text-lg">Start free, scale as you grow.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-2 max-w-4xl mx-auto gap-8">
-            <!-- Starter -->
-            <div class="p-10 rounded-[2.5rem] border-2 border-gray-100 bg-white hover:border-brand-orange/20 transition-all reveal-left">
-                <div class="text-sm font-bold text-brand-orange uppercase tracking-widest mb-4">Starter</div>
-                <div class="text-5xl font-hero font-bold text-brand-dark mb-6">$19<span class="text-lg text-gray-400 font-normal">/mo</span></div>
-                <p class="text-gray-500 mb-8 font-noname">Perfect for individuals and side projects explore the power of AI outreach.</p>
-                <ul class="space-y-4 text-gray-600 mb-10">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> 100 Leads per day</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> Unlimited subreddits</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> AI Reply Generation</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> Reddit &amp; X Support</li>
-                </ul>
-                <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=homepage&utm_content=pricing_starter_start_trial" class="w-full py-4 px-4 bg-brand-dark text-white rounded-full font-bold hover:bg-brand-orange transition-colors">Start Free Trial</a>
-            </div>
-
-            <!-- Professional -->
-            <div class="p-10 rounded-[2.5rem] border-2 border-brand-orange bg-brand-bg relative shadow-2xl reveal-right">
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-orange text-white text-xs font-bold px-6 py-2 rounded-full tracking-widest">MOST POPULAR</div>
-                <div class="text-sm font-bold text-brand-orange uppercase tracking-widest mb-4">Professional</div>
-                <div class="text-5xl font-hero font-bold text-brand-dark mb-6">$49<span class="text-lg text-gray-400 font-normal">/mo</span></div>
-                <p class="text-gray-500 mb-8 font-noname">For scaling teams that need unlimited potential and multi-channel dominance.</p>
-                <ul class="space-y-4 text-gray-600 mb-10">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> Unlimited Leads</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> Reddit, X &amp; LinkedIn</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> Custom Brand Voice</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand-green"></i> Priority Support</li>
-                </ul>
-                <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=homepage&utm_content=pricing_pro_get_unlimited" class="w-full py-4 px-4 bg-brand-orange text-white rounded-full font-bold hover:shadow-glow transition-all">Get Unlimited Access</a>
-            </div>
-        </div>
+<!-- ═══════════════════════════════════════════════
+     LINE 6: PRICING (monobank bento cards)
+     ═══════════════════════════════════════════════ -->
+<section id="pricing" class="line line--alt">
+  <div class="layout">
+    <div class="section-header m-animate">
+      <div class="section-label">Pricing</div>
+      <div class="section-title">Start free. Scale when it works.</div>
+      <p class="section-sub">No credit card required. Cancel anytime.</p>
     </div>
+
+    <div class="pricing-grid m-animate-stagger m-animate">
+      <div class="price-card">
+        <div class="price-card__name">Starter</div>
+        <div class="price-card__amount">$19<span>/mo</span></div>
+        <p class="price-card__desc">For individuals and side projects getting started.</p>
+        <ul class="price-card__features">
+          <li>100 leads per day</li>
+          <li>Unlimited subreddits</li>
+          <li>AI reply generation</li>
+          <li>Reddit &amp; X support</li>
+        </ul>
+        <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=v4&utm_content=pricing_starter" class="price-card__btn btn--outline-dark">Start free trial</a>
+      </div>
+
+      <div class="price-card price-card--featured">
+        <span class="price-card__badge">Most popular</span>
+        <div class="price-card__name">Professional</div>
+        <div class="price-card__amount">$49<span>/mo</span></div>
+        <p class="price-card__desc">For teams that want unlimited leads and all platforms.</p>
+        <ul class="price-card__features">
+          <li>Unlimited leads</li>
+          <li>Reddit, X &amp; LinkedIn</li>
+          <li>Custom brand voice</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=v4&utm_content=pricing_pro" class="price-card__btn btn--accent">Start free trial</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- CTA -->
-<section class="py-24 px-6 mb-12">
-    <div class="max-w-5xl mx-auto rounded-[3rem] bg-brand-dark relative overflow-hidden p-12 lg:p-20 text-center">
-        <!-- Decoration -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-orange/20 blur-[120px] rounded-full"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-purple/20 blur-[120px] rounded-full"></div>
-        
-        <div class="relative z-10">
-            <h2 class="text-4xl lg:text-6xl font-hero font-bold text-white mb-8 tracking-tight">Stop hunting. Start replying.</h2>
-            <p class="text-xl text-white/50 mb-12 max-w-2xl mx-auto">
-                Join thousands of founders finding their next 100 customers with AI-powered social listening.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=homepage&utm_content=footer_start_free_today" class="px-10 py-5 bg-white text-brand-dark rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-xl">Start for Free Today</a>
-                <button class="px-10 py-5 bg-white/10 text-white border border-white/20 rounded-full font-bold text-lg hover:bg-white/20 transition-all">Book a Workshop</button>
-            </div>
-            <!-- <p class="mt-8 text-white/30 text-sm">No credit card required. First 3 days on us.</p> -->
-        </div>
+<!-- ═══════════════════════════════════════════════
+     LINE 7: FAQ (monobank accordion)
+     ═══════════════════════════════════════════════ -->
+<section id="faq" class="line">
+  <div class="layout">
+    <div class="section-header m-animate">
+      <div class="section-label">FAQ</div>
+      <div class="section-title">Questions &amp; answers</div>
     </div>
+
+    <div class="faq-list m-animate">
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Won't AI replies look spammy?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>No. AutoReply reads the full context of every post and generates genuinely helpful, conversational replies. They reference specific details from the original message and provide value before mentioning your product. You can also edit any reply before posting.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Will my accounts get banned?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>AutoReply stays within platform guidelines. Replies are value-first and human-sounding. We pace your replies to avoid rate limits. Users have been running AutoReply for months without any account issues.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Do I approve every reply before it posts?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Yes. You stay in full control. AutoReply generates the reply and queues it for review. You can edit, approve, or skip. Nothing gets posted without your explicit action.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          How is this different from Popsy or Replymer?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Popsy only covers Reddit. Replymer uses human writers but starts at $99/mo with a managed setup. AutoReply covers all three platforms with AI replies, instant self-serve onboarding, starting at $19/mo.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Is there a free trial?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Yes. Free trial with no credit card required. Set up your keywords, see leads flowing in, and decide if it&rsquo;s right for you before paying.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Can I customize the reply tone?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>On Professional, you set a custom brand voice &mdash; tone, vocabulary, formality, and how your product is mentioned. The AI adapts every reply to match.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════
+     LINE 8: FINAL CTA (monobank dark card + glow)
+     ═══════════════════════════════════════════════ -->
+<section class="line">
+  <div class="layout">
+    <div class="cta-block m-animate">
+      <div class="cta-block__blur cta-block__blur--1"></div>
+      <div class="cta-block__blur cta-block__blur--2"></div>
+      <div class="cta-block__inner">
+        <div class="cta-block__title">Stop lurking.<br>Start replying.</div>
+        <p class="cta-block__sub">Your competitors are already in these conversations. Be there first.</p>
+        <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=v4&utm_content=final" class="btn btn--white btn--lg">Start free trial &rarr;</a>
+        <p class="cta-block__meta">No credit card &middot; 2-minute setup &middot; Cancel anytime</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER (monobank: black, minimal)
+     ═══════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="layout">
+    <div class="footer__inner">
+      <div class="footer__left">&copy; 2026 AutoReply.ing</div>
+      <div class="footer__links">
+        <a href="mailto:hello@autoreply.ing">Contact</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     SCRIPTS (monobank: IntersectionObserver + sticky)
+     ═══════════════════════════════════════════════ -->
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Page specific logic if needed
+// ─── Scroll reveal (monobank .m-animate pattern) ───
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('active');
+      animObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.m-animate').forEach(el => animObs.observe(el));
+
+// ─── Sticky header (monobank glass transition) ───
+const header = document.getElementById('header');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y > 60) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+  lastScroll = y;
+}, { passive: true });
+
+// ─── Mobile menu toggle ───
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+if (menuBtn && mobileMenu) {
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    // Ensure header has bg when menu is open
+    if (mobileMenu.classList.contains('open')) {
+      header.classList.add('scrolled');
+    } else if (window.scrollY <= 60) {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // Close menu when a link is tapped
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      if (window.scrollY <= 60) {
+        header.classList.remove('scrolled');
+      }
     });
-</script></main>
+  });
+}
+</script>
 
-    <footer class="bg-brand-dark text-white/70 py-16 text-sm">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-16">
-            <div class="col-span-1 md:col-span-1">
-                <div class="flex items-center gap-2 text-white mb-6">
-                    <img src="/apple-touch-icon.png" alt="Autoreply logo" class="w-8">
-                    <span class="font-logo font-bold text-2xl tracking-tight">AutoReply.ing</span>
-                </div>
-                <p class="text-gray-400 leading-relaxed">
-                    AI-powered outreach that helps you find customers where they are talking.
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-6">Product</h4>
-                <ul class="space-y-3">
-                    <li><a href="#" class="hover:text-white transition">Reddit Monitoring</a></li>
-                    <li><a href="#" class="hover:text-white transition">X/Twitter Outreach</a></li>
-                    <li><a href="#" class="hover:text-white transition">LinkedIn Leads</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-6">Company</h4>
-                <ul class="space-y-3">
-                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
-                    <li><a href="mailto:hello@autoreply.ing" class="hover:text-white transition">Contact Us</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-6">Connect</h4>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-orange transition"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-orange transition"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>© 2026 AutoReply.ing. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15 });
-
-            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => observer.observe(el));
-
-            // Parallax
-            const parallaxElements = document.querySelectorAll('[data-parallax]');
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                parallaxElements.forEach(el => {
-                    const speed = parseFloat(el.getAttribute('data-parallax')) || 0.1;
-                    el.style.transform = `translateY(${scrollY * speed}px)`;
-                });
-            });
-
-            // Counters
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const el = entry.target;
-                        const target = parseInt(el.getAttribute('data-target'));
-                        let current = 0;
-                        const duration = 2000;
-                        const step = target / (duration / 16);
-                        const interval = setInterval(() => {
-                            current += step;
-                            if (current >= target) {
-                                el.innerText = target + (el.getAttribute('data-suffix') || '');
-                                clearInterval(interval);
-                            } else {
-                                el.innerText = Math.floor(current) + (el.getAttribute('data-suffix') || '');
-                            }
-                        }, 16);
-                        counterObserver.unobserve(el);
-                    }
-                });
-            }, { threshold: 0.5 });
-            document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
-        });
-    </script>
-
-</body></html>
+</body>
+</html>
