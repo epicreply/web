@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found — AutoReply</title>
+<meta name="description" content="The page you're looking for doesn't exist or has been moved.">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LHR2Z92CJ6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LHR2Z92CJ6');
+</script>
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<meta property="og:title" content="Page not found — AutoReply">
+<meta property="og:description" content="The page you're looking for doesn't exist or has been moved.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/shared.css">
+<style>
+  .not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 180px;
+    padding-bottom: var(--space-3xl);
+    min-height: calc(100vh - 200px);
+  }
+
+  .not-found__code {
+    font-size: 120px;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--grad-start), var(--grad-mid), var(--grad-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--space-md);
+  }
+
+  .not-found__title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .not-found__sub {
+    font-size: 17px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 400px;
+    margin-bottom: var(--space-lg);
+  }
+
+  @media (max-width: 640px) {
+    .not-found {
+      padding-top: 120px;
+    }
+
+    .not-found__code {
+      font-size: 80px;
+    }
+
+    .not-found__title {
+      font-size: 22px;
+    }
+
+    .not-found__sub {
+      font-size: 15px;
+    }
+  }
+</style>
+</head>
+<body class="page-shell">
+
+<!-- HEADER -->
+<header class="header scrolled" id="header">
+  <div class="header__inner">
+    <a href="/" class="header__logo">
+      <img src="logo_white.svg" alt="AutoReply logo" class="white_logo">
+      <img src="logo_black.svg" alt="AutoReply logo" class="black_logo">
+    </a>
+    <nav class="header__nav">
+      <a href="/#how" class="header__link">How it works</a>
+      <a href="/#platforms" class="header__link">Platforms</a>
+      <a href="/#pricing" class="header__link">Pricing</a>
+      <a href="/#faq" class="header__link">FAQ</a>
+      <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=v4&utm_content=nav" class="header__cta">Start free trial</a>
+      <button class="header__menu-btn" id="menuBtn" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </nav>
+
+    <div class="header__mobile-menu" id="mobileMenu">
+      <a href="/#how" class="header__mobile-link">How it works</a>
+      <a href="/#platforms" class="header__mobile-link">Platforms</a>
+      <a href="/#pricing" class="header__mobile-link">Pricing</a>
+      <a href="/#faq" class="header__mobile-link">FAQ</a>
+      <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=v4&utm_content=nav_mobile" class="header__mobile-cta">Start free trial &rarr;</a>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE CONTENT -->
+<main class="not-found">
+  <div class="not-found__code m-animate">404</div>
+  <h1 class="not-found__title m-animate">Page not found</h1>
+  <p class="not-found__sub m-animate">The page you're looking for doesn't exist or has been moved.</p>
+  <a href="/" class="btn btn--dark btn--md m-animate">Go to homepage</a>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="layout">
+    <div class="footer__inner">
+      <div class="footer__left">&copy; 2026 AutoReply.ing</div>
+      <div class="footer__links">
+        <a href="/blog/community-marketing-2026">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('active');
+      animObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.m-animate').forEach(el => animObs.observe(el));
+
+// Mobile menu toggle
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+if (menuBtn && mobileMenu) {
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+}
+</script>
+
+</body>
+</html>
