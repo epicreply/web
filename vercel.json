@@ -10,10 +10,10 @@
     { "src": "/contact/?", "dest": "/contact.html" },
     { "src": "/blog/community-marketing-2026/?", "dest": "/blog/community-marketing-2026.html" },
 
-    {
-      "src": "/(.*)",
-      "dest": "/404.html",
-      "status": 404
-    }
+    { "src": "/(.*)\\.(css|js|map|png|jpg|jpeg|gif|svg|webp|ico|txt|xml|json|woff|woff2|ttf|eot)$", "dest": "/$1" },
+
+    { "src": "/(assets|static|images|img|fonts)/(.*)", "dest": "/$1/$2" },
+
+    { "src": "/(.*)", "dest": "/404.html", "status": 404 }
   ]
 }
