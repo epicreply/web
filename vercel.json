@@ -4,7 +4,6 @@
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/blog/community-marketing-2026", "destination": "/blog/community-marketing-2026.html" }
-  "routes": [
     { "src": "/llms.txt", "dest": "/llms.txt" },
 
     { "src": "/robots.txt", "dest": "/robots.txt" },
