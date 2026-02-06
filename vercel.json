@@ -1,5 +1,12 @@
 {
   "routes": [
-    { "src": "/llms.txt", "dest": "/llms.txt" }
+    { "src": "/llms.txt", "dest": "/llms.txt" },
+
+    { "src": "/robots.txt", "dest": "/robots.txt" },
+    { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
+
+    { "src": "/terms/?", "dest": "/terms.html" },
+    { "src": "/privacy/?", "dest": "/privacy.html" },
+    { "src": "/contact/?", "dest": "/contact.html" }
   ]
 }
