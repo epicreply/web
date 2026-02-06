@@ -1,0 +1,14 @@
+.git/
+node_modules/
+.next/
+.cache/
+dist/
+build/
+coverage/
+*.log
+.DS_Store
+*.pyc
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
