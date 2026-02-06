@@ -591,16 +591,27 @@
 </footer>
 
 <script>
-// Scroll reveal
-const animObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('active');
-      animObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.m-animate').forEach(el => animObs.observe(el));
+// Scroll reveal (with fallback so content is never hidden)
+if ('IntersectionObserver' in window) {
+  const animObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('active');
+        animObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.m-animate').forEach(el => animObs.observe(el));
+
+  // Safety net in case the observer fails to fire (e.g., browser quirks)
+  window.setTimeout(() => {
+    document.querySelectorAll('.m-animate').forEach(el => {
+      if (!el.classList.contains('active')) el.classList.add('active');
+    });
+  }, 1500);
+} else {
+  document.querySelectorAll('.m-animate').forEach(el => el.classList.add('active'));
+}
 
 // Mobile menu toggle
 const menuBtn = document.getElementById('menuBtn');
