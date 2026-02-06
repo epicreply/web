@@ -1,15 +1,8 @@
 {
-  "routes": [
-    { "src": "/llms.txt", "dest": "/llms.txt" },
-
-    { "src": "/robots.txt", "dest": "/robots.txt" },
-    { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
-
-    { "src": "/terms/?", "dest": "/terms.html" },
-    { "src": "/privacy/?", "dest": "/privacy.html" },
-    { "src": "/contact/?", "dest": "/contact.html" },
-    { "src": "/blog/community-marketing-2026/?", "dest": "/blog/community-marketing-2026.html" },
-
-    { "src": "/(.*)", "dest": "/404.html" }
+  "rewrites": [
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/blog/community-marketing-2026", "destination": "/blog/community-marketing-2026.html" }
   ]
 }
