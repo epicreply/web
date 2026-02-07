@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — AutoReply.ing</title>
+<meta name="description" content="Insights on community marketing, social listening, and AI-powered engagement on Reddit, X, and LinkedIn. Tips and strategies from the AutoReply team.">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LHR2Z92CJ6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LHR2Z92CJ6');
+</script>
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://autoreply.ing/blog">
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Blog — AutoReply.ing">
+<meta property="og:description" content="Insights on community marketing, social listening, and AI-powered engagement on Reddit, X, and LinkedIn.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://autoreply.ing/blog">
+<meta property="og:site_name" content="AutoReply.ing">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blog — AutoReply.ing">
+<meta name="twitter:description" content="Insights on community marketing, social listening, and AI-powered engagement on Reddit, X, and LinkedIn.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
+
+<!-- Shared styles -->
+<link rel="preload" href="/shared.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/shared.css"></noscript>
+
+<!-- Blog listing styles -->
+<style>
+/* Blog grid */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  max-width: 900px;
+}
+
+.blog-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card:hover {
+  border-color: #ccc;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  transform: translateY(-4px);
+}
+
+.blog-card__img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.blog-card__body {
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.blog-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.blog-card__tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.blog-card__date {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.blog-card__title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.blog-card__excerpt {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  flex: 1;
+}
+
+.blog-card__link {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s;
+}
+
+.blog-card:hover .blog-card__link {
+  gap: 10px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 920px) {
+  .blog-grid {
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 640px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+
+  .blog-card__body {
+    padding: 18px 20px 24px;
+  }
+
+  .blog-card__title {
+    font-size: 18px;
+  }
+
+  .blog-card__excerpt {
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+<body class="page-shell">
+
+<!-- HEADER -->
+<header class="header scrolled" id="header">
+  <div class="header__inner">
+    <a href="/" class="header__logo">
+      <img src="/logo_white.svg" alt="AutoReply logo" class="white_logo" fetchpriority="high">
+      <img src="/logo_black.svg" alt="AutoReply logo" class="black_logo">
+    </a>
+    <nav class="header__nav">
+      <a href="/#how" class="header__link">How it works</a>
+      <a href="/#platforms" class="header__link">Platforms</a>
+      <a href="/#pricing" class="header__link">Pricing</a>
+      <a href="/#faq" class="header__link">FAQ</a>
+      <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=v4&utm_content=nav" class="header__cta">Start free trial</a>
+      <button class="header__menu-btn" id="menuBtn" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </nav>
+
+    <div class="header__mobile-menu" id="mobileMenu">
+      <a href="/#how" class="header__mobile-link">How it works</a>
+      <a href="/#platforms" class="header__mobile-link">Platforms</a>
+      <a href="/#pricing" class="header__mobile-link">Pricing</a>
+      <a href="/#faq" class="header__mobile-link">FAQ</a>
+      <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=v4&utm_content=nav_mobile" class="header__mobile-cta">Start free trial &rarr;</a>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE CONTENT -->
+<main class="page">
+  <div class="layout">
+
+    <!-- Page Header -->
+    <div class="page-header m-animate">
+      <h1 class="page-header__title">Blog</h1>
+      <p class="page-header__sub">Insights on community marketing, social listening, and growing your business through authentic conversations.</p>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="blog-grid m-animate-stagger m-animate">
+
+      <!-- Article 1 -->
+      <a href="/blog/reddit-storytelling-saas-marketing" class="blog-card">
+        <img
+          src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&h=375&fit=crop&q=80"
+          alt="Reddit app on phone screen"
+          class="blog-card__img"
+          loading="lazy"
+        >
+        <div class="blog-card__body">
+          <div class="blog-card__meta">
+            <span class="blog-card__tag">Reddit Marketing</span>
+            <span class="blog-card__date">Feb 7, 2026</span>
+          </div>
+          <h2 class="blog-card__title">Storytelling on Reddit: How to Promote Without Getting Banned</h2>
+          <p class="blog-card__excerpt">Learn the art of Reddit storytelling &mdash; share genuine experiences, contribute value, and grow your SaaS without breaking subreddit rules.</p>
+          <span class="blog-card__link">Read article &rarr;</span>
+        </div>
+      </a>
+
+      <!-- Article 2 -->
+      <a href="/blog/community-marketing-2026" class="blog-card">
+        <img
+          src="https://images.unsplash.com/photo-1552581234-26160f608093?w=600&h=375&fit=crop&q=80"
+          alt="Team collaborating on marketing strategy"
+          class="blog-card__img"
+          loading="lazy"
+        >
+        <div class="blog-card__body">
+          <div class="blog-card__meta">
+            <span class="blog-card__tag">Community Marketing</span>
+            <span class="blog-card__date">Feb 6, 2026</span>
+          </div>
+          <h2 class="blog-card__title">Community Marketing in 2026: From Broadcasting to Belonging</h2>
+          <p class="blog-card__excerpt">The complete guide to building real engagement through two-way conversations on Reddit, X, and LinkedIn.</p>
+          <span class="blog-card__link">Read article &rarr;</span>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="layout">
+    <div class="footer__inner">
+      <div class="footer__left">&copy; 2026 AutoReply.ing</div>
+      <div class="footer__links">
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal (with fallback so content is never hidden)
+if ('IntersectionObserver' in window) {
+  const animObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('active');
+        animObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.m-animate').forEach(el => animObs.observe(el));
+
+  // Safety net in case the observer fails to fire
+  window.setTimeout(() => {
+    document.querySelectorAll('.m-animate').forEach(el => {
+      if (!el.classList.contains('active')) el.classList.add('active');
+    });
+  }, 1500);
+} else {
+  document.querySelectorAll('.m-animate').forEach(el => el.classList.add('active'));
+}
+
+// Mobile menu toggle
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+if (menuBtn && mobileMenu) {
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+}
+</script>
+
+</body>
+</html>
