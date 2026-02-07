@@ -8,6 +8,7 @@
     { "src": "/terms/?", "dest": "/terms.html" },
     { "src": "/privacy/?", "dest": "/privacy.html" },
     { "src": "/contact/?", "dest": "/contact.html" },
-    { "src": "/blog/community-marketing-2026/?", "dest": "/blog/community-marketing-2026.html" }
+    { "src": "/blog/community-marketing-2026/?", "dest": "/blog/community-marketing-2026.html" },
+    { "src": "/blog/reddit-storytelling-saas-marketing/?", "dest": "/blog/reddit-storytelling-saas-marketing.html" }
   ]
 }
