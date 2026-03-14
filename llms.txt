@@ -11,14 +11,33 @@ Key capabilities:
 - One-click reply deployment to engage leads instantly
 - Custom brand voice configuration for consistent messaging
 - Dashboard analytics for tracking mentions, replies, and performance
+- REST API for programmatic access to leads, scans, and reply generation
+- MCP (Model Context Protocol) integration for connecting AI agents and LLM workflows
+- Webhooks for real-time event notifications (lead.detected, reply.generated, reply.posted)
 
-Target users include SaaS founders, indie hackers, startups, marketing teams, and agencies looking to generate organic leads through social listening and engagement.
+Target users include SaaS founders, indie hackers, startups, marketing teams, agencies, and developers building outreach automations on top of AutoReply.
 
 ## Docs
 
 - [How It Works](https://autoreply.ing/#how-it-works): Step-by-step guide explaining the lead discovery and reply workflow
 - [Platforms](https://autoreply.ing/#features): Overview of supported social platforms (Reddit, X, LinkedIn) and their specific capabilities
 - [Pricing](https://autoreply.ing/#pricing): Current pricing plans including Starter ($19/mo) and Professional ($49/mo) tiers
+
+## API & Integrations
+
+AutoReply provides a developer-friendly API, MCP agent interface, and webhooks on the Professional plan ($49/mo) to automate outreach workflows.
+
+API endpoints:
+- POST /api/leads/scan — trigger a conversation scan
+- GET /api/leads — fetch discovered leads
+- POST /api/replies/generate — generate AI replies programmatically
+
+Webhook events:
+- lead.detected — fired when a new high-intent lead is found
+- reply.generated — fired when an AI reply is ready for review
+- reply.posted — fired when a reply is published to a platform
+
+MCP integration allows AI agents and LLM-based workflows to discover leads and generate replies automatically, enabling fully autonomous outreach pipelines.
 
 ## Getting Started
 
