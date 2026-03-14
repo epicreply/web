@@ -923,6 +923,196 @@
   .cta-block__title { font-size: 22px; }
   .price-card__amount { font-size: 36px; }
 }
+
+/* ═══════════════════════════════════════════════
+   INTEGRATIONS SECTION (API / MCP / Webhooks)
+   ═══════════════════════════════════════════════ */
+.integrations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.integration-card {
+  background: linear-gradient(180deg, #f4f4f4 0%, rgba(255, 255, 255, 0) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.integration-card:hover {
+  border-color: #ccc;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+.integration-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 94, 58, 0.03) 0%, rgba(255, 94, 58, 0) 100%);
+  border-radius: var(--radius-lg);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.integration-card:hover::after { opacity: 1; }
+
+.integration-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+  font-size: 24px;
+  background: var(--accent-soft);
+}
+
+.integration-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.integration-card__text {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.integrations-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.integrations-cta__link {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.integrations-cta__link:hover {
+  opacity: 0.8;
+}
+
+.integrations-cta__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 94, 58, 0.08);
+  border: 1px solid rgba(255, 94, 58, 0.2);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════════════
+   DEVELOPER SECTION (code cards + webhook)
+   ═══════════════════════════════════════════════ */
+.dev-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.dev-code-card {
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  overflow: hidden;
+}
+
+.dev-code-card__header {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: var(--space-sm);
+  font-family: var(--font);
+}
+
+.dev-code-card__line {
+  font-size: 14px;
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+}
+
+.dev-code-card__line .method {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.dev-code-card__line .path {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dev-code-card__line .event {
+  color: #ff5e3a;
+}
+
+/* Hero API badge */
+.hero__api-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-pill);
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.02em;
+  margin-top: 12px;
+}
+
+.hero__api-badge svg {
+  opacity: 0.7;
+}
+
+/* Responsive: Integration & Dev sections */
+@media (max-width: 920px) {
+  .integrations-grid { grid-template-columns: 1fr; }
+  .dev-section { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .integration-card {
+    padding: 24px 20px;
+    border-radius: var(--radius-md);
+  }
+  .integration-card__title { font-size: 17px; }
+  .integration-card__text { font-size: 14px; }
+  .dev-code-card {
+    padding: 20px;
+    border-radius: var(--radius-md);
+  }
+  .dev-code-card__line {
+    font-size: 12px;
+    line-height: 1.9;
+  }
+}
 </style>
 </head>
 <body>
@@ -989,6 +1179,10 @@
         </div>
 
         <p class="hero__meta hero-animate hero-animate--delay-4">No credit card required &middot; 2-minute setup</p>
+        <div class="hero__api-badge hero-animate hero-animate--delay-4">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Developer-friendly API
+        </div>
       </div>
 
       <div class="hero__visual hero-animate hero-animate--delay-4">
@@ -1215,6 +1409,50 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
+     LINE 5.5: INTEGRATIONS (API + MCP + Webhooks)
+     ═══════════════════════════════════════════════ -->
+<section class="line line--dark" id="integrations">
+  <div class="layout">
+    <div class="section-header section-header--center m-animate">
+      <div class="section-label">Integrations</div>
+      <div class="section-title" style="color:#fff">Automate your outreach stack</div>
+      <p class="section-sub">Connect AutoReply to your tools using API, MCP agents, and webhooks.</p>
+    </div>
+
+    <div class="integrations-grid m-animate-stagger m-animate">
+      <div class="integration-card card--dark">
+        <div class="integration-card__icon" style="background: rgba(16, 185, 129, 0.12);">
+          <svg width="24" height="24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div class="integration-card__title" style="color:#fff">API Access</div>
+        <p class="integration-card__text" style="color: rgba(255,255,255,0.6);">Trigger scans, fetch leads, and generate replies programmatically. Build your own workflows or integrate with internal tools.</p>
+      </div>
+
+      <div class="integration-card card--dark">
+        <div class="integration-card__icon" style="background: rgba(139, 92, 246, 0.12);">
+          <svg width="24" height="24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        </div>
+        <div class="integration-card__title" style="color:#fff">MCP / Agent Integrations</div>
+        <p class="integration-card__text" style="color: rgba(255,255,255,0.6);">Connect AutoReply to AI agents and LLM workflows. Let agents discover leads and generate replies automatically.</p>
+      </div>
+
+      <div class="integration-card card--dark">
+        <div class="integration-card__icon" style="background: rgba(255, 94, 58, 0.12);">
+          <svg width="24" height="24" fill="none" stroke="#ff5e3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="integration-card__title" style="color:#fff">Webhooks</div>
+        <p class="integration-card__text" style="color: rgba(255,255,255,0.6);">Receive real-time events when new leads are found or replies are generated. Trigger CRM updates, Slack alerts, or automation flows.</p>
+      </div>
+    </div>
+
+    <div class="integrations-cta m-animate">
+      <a href="#" class="integrations-cta__link">View API docs &rarr;</a>
+      <span class="integrations-cta__badge">Professional plan</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
      LINE 6: PRICING (Autoreply bento cards)
      ═══════════════════════════════════════════════ -->
 <section id="pricing" class="line line--alt">
@@ -1248,6 +1486,8 @@
           <li>Unlimited leads</li>
           <li>Reddit, X &amp; LinkedIn</li>
           <li>Custom brand voice</li>
+          <li>API + Webhooks access</li>
+          <li>MCP / agent integrations</li>
           <li>Priority support</li>
         </ul>
         <a href="https://app.autoreply.ing/auth?utm_source=landing&utm_medium=cta&utm_campaign=v4&utm_content=pricing_pro" class="price-card__btn btn--accent">Start free trial</a>
@@ -1325,6 +1565,45 @@
         <div class="faq-a">
           <p>On Professional, you set a custom brand voice &mdash; tone, vocabulary, formality, and how your product is mentioned. The AI adapts every reply to match.</p>
         </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Can I integrate AutoReply with my tools or AI agents?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Yes. The Professional plan includes API access, webhooks, and MCP integrations so you can connect AutoReply to your CRM, automation tools, or AI agents.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     LINE 7.5: DEVELOPER SECTION (mini code cards)
+     ═══════════════════════════════════════════════ -->
+<section class="line line--alt">
+  <div class="layout">
+    <div class="section-header section-header--center m-animate">
+      <div class="section-label">For developers</div>
+      <div class="section-title">Build automations on top of AutoReply</div>
+      <p class="section-sub">Use our API, MCP agent interface, and webhooks to connect AutoReply to your stack.</p>
+    </div>
+
+    <div class="dev-section m-animate">
+      <div class="dev-code-card">
+        <div class="dev-code-card__header">API Endpoints</div>
+        <div class="dev-code-card__line"><span class="method">POST</span> <span class="path">/api/leads/scan</span></div>
+        <div class="dev-code-card__line"><span class="method">GET</span>&nbsp; <span class="path">/api/leads</span></div>
+        <div class="dev-code-card__line"><span class="method">POST</span> <span class="path">/api/replies/generate</span></div>
+      </div>
+
+      <div class="dev-code-card">
+        <div class="dev-code-card__header">Webhook Events</div>
+        <div class="dev-code-card__line"><span class="event">lead.detected</span></div>
+        <div class="dev-code-card__line"><span class="event">reply.generated</span></div>
+        <div class="dev-code-card__line"><span class="event">reply.posted</span></div>
       </div>
     </div>
   </div>
