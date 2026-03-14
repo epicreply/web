@@ -934,8 +934,8 @@
 }
 
 .integration-card {
-  background: linear-gradient(180deg, #f4f4f4 0%, rgba(255, 255, 255, 0) 100%);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
   position: relative;
@@ -943,20 +943,10 @@
   transition: all 0.3s ease-in-out;
 }
 .integration-card:hover {
-  border-color: #ccc;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
-.integration-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(255, 94, 58, 0.03) 0%, rgba(255, 94, 58, 0) 100%);
-  border-radius: var(--radius-lg);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-}
-.integration-card:hover::after { opacity: 1; }
 
 .integration-card__icon {
   width: 56px;
