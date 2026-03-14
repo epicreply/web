@@ -236,6 +236,12 @@
   margin-bottom: var(--space-md);
   font-size: 24px;
 }
+.card__icon svg {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.card:hover .card__icon svg {
+  transform: rotate(15deg) scale(1.1);
+}
 
 .card__icon--reddit { background: rgba(255, 69, 0, 0.08); }
 .card__icon--x { background: rgba(0, 0, 0, 0.06); }
@@ -958,6 +964,12 @@
   margin-bottom: var(--space-md);
   font-size: 24px;
   background: var(--accent-soft);
+}
+.integration-card__icon svg {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.integration-card:hover .integration-card__icon svg {
+  transform: rotate(15deg) scale(1.1);
 }
 
 .integration-card__title {
